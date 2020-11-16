@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Gallery from './Gallery';
 
-function Configuration({avatarName}) {
+function Configuration({avatarName, setStaticImg}) {
 	const [ activeTab, setActiveTab ] = useState('Happy');
 	const [ selectedEmotion, setSelectedEmotion ] = useState('Happy');
-	const emotions = [ 'Happy', 'Sad', 'Surprised' ];
+	const emotions = [ 'Happy', 'Sad', 'Surprised', 'Angry' ];
 
 	const handleTabClick = (emotion) => {
 		setActiveTab(emotion);
@@ -29,7 +29,7 @@ function Configuration({avatarName}) {
 			</div>
 			<div id="tab-content">
 				<span>Choose a {selectedEmotion.toLowerCase()} picture:</span>
-				<Gallery avatarName={avatarName} emotion={selectedEmotion}/>
+				<Gallery avatarName={avatarName} emotion={selectedEmotion} setStaticImg={setStaticImg}/>
 			</div>
 		</section>
 	);

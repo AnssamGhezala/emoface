@@ -4,11 +4,11 @@
 	width: 70%;
 	min-height: 100vh;
 	max-height: 100vh;
-	grid-template-columns: 280px 448px;
+	grid-template-columns: 280px 60%;
 	grid-template-rows: 10px 50%;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
-	grid-template-areas: "header header header" "search output output" "search config config" "search config config";
+	grid-template-areas: "header header " "search output " "search config " "search config ";
 }
 
 input {
@@ -20,9 +20,37 @@ input {
 	color: #333;
 }
 
+#video {
+	grid-area: output;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
 #video-output {
 	border-style: solid;
 	min-width: 0;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+#video-output > video {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#video-output > div {
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	height: 100%; 
+}
+
+.camera-switch {
+	display: flex;
 }
 
 #avatars-container {
@@ -63,10 +91,6 @@ input {
 	padding: 10px;
 }
 
-#video-output {
-	grid-area: output;
-}
-
 #configuration {
 	grid-area: config;
 	display: flex;
@@ -94,13 +118,25 @@ input {
 	white-space: nowrap;
 	padding-top: 20px;
 }
-.emotion-container > div {
-	padding-top: 6px;
-	width: 128px;
-	height: 166px;
+/* .emotion-container > img {
+	margin-top: 6px;
 	border: solid 2px black;
+	border-radius: 2px;
 	display: inline-block;
 	margin-right: 15px;
+
+} */
+.emotion-container > div {
+	margin-top: 6px;
+	border: solid 2px black;
+	border-radius: 2px;
+	display: inline-block;
+	margin-right: 15px;
+	width: 128px;
+	height: 166px;
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
 }
 .tabs > li {
 	cursor: pointer;
