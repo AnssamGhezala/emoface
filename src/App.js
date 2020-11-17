@@ -12,10 +12,10 @@ function App() {
 
 	const [ mode, setMode ] = useState('static');
 	const [ isCameraOn, setIsCameraOn ] = useState(true);
-	//const [ emotionImg, setEmotionImg ] = useState({});
 	const [ avatars, setAvatars ] = useState([ { name: 'Rowan Atkinson', img: Rowan } ]);
+	const [ selectedAvatar, setSelectedAvatar ] = useState({ name: 'Rowan Atkinson', img: Rowan });
+
 	const handleSearch = (e) => {
-		console.log('rowan atkinson'.includes(e.target.value));
 		'rowan atkinson'.includes(e.target.value)
 			? setAvatars([ { name: 'Rowan Atkinson', img: Rowan } ])
 			: setAvatars([]);
@@ -45,33 +45,32 @@ function App() {
 										</div>
 									</div>
 								))}
+								{avatars.length == 0 && <span>No avatars found</span>}
 							</div>
 						</div>
 					</section>
 					<section id="video">
-						<div id="camera-mode">
+						<center id="camera-mode">
 							<FormControlLabel
-								value="female"
 								control={
 									<Switch
 										className="camera-switch"
 										checked={isCameraOn}
 										onChange={handleChangeCamera}
-										color="primary"
 										inputProps={{ 'aria-label': 'primary checkbox' }}
 									/>
 								}
-								label={`Video output ${!isCameraOn ? '(disabled)' : ''}`}
+								label={`Video Output ${!isCameraOn ? '(disabled)' : '(enabled)'}`}
 							/>
-						</div>
-						<div id="video-output">
+						</center>
+						<div id="video-output" style={{ borderColor: `${isCameraOn ? '#e60000' : 'black'}` }}>
 							{mode === 'real' && (
 								<video autoPlay loop>
 									<source src={video} type="video/mp4" />
 									Your browser does not support the video tag.
 								</video>
 							)}
-							{mode === 'static' && <div style={{ backgroundImage: `url(${staticImg}` }} /> }
+							{mode === 'static' && <div style={{ backgroundImage: `url(${staticImg}` }} />}
 						</div>
 						<div>
 							<Switch
@@ -80,11 +79,10 @@ function App() {
 								color="primary"
 								inputProps={{ 'aria-label': 'primary checkbox' }}
 							/>
-							Detect facial expression
+							<i>Detect facial expression</i>
 						</div>
 					</section>
-
-					<Configuration avatarName="Rowan Atkinson" setStaticImg={setStaticImg} />
+					<Configuration avatarName={selectedAvatar.name} setStaticImg={setStaticImg} />
 				</div>
 			</div>
 		</ThemeProvider>

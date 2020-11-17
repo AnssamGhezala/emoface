@@ -29,7 +29,7 @@ input {
 }
 
 #video-output {
-	border-style: solid;
+	border: solid;
 	min-width: 0;
 	display: flex;
 	justify-content: center;
@@ -46,7 +46,7 @@ input {
 	background-position: center;
 	background-size: cover;
 	width: 100%;
-	height: 100%; 
+	height: 100%;
 }
 
 .camera-switch {
@@ -55,19 +55,19 @@ input {
 
 #avatars-container {
 	margin-top: 16px;
-	border: 1px black solid;
+	border: 0px black solid;
 	height: 100%;
 	overflow: scroll;
 	background: linear-gradient(180deg, #ffffff 0%, hsl(204, 47%, 74%) 100%);
 	border-radius: 10px;
 	border-color: #222;
-	border-style: solid;
 	border-top-width: 4px;
 }
 
 #avatars-wrapper {
 	height: 100%;
 	margin: auto;
+	padding-top: 10px;
 	width: 124px;
 	text-align: center;
 }
@@ -75,8 +75,8 @@ input {
 .avatar {
 	height: 124px;
 	width: 124px;
-	border: 1px black solid;
-	margin: 15px 0 15px 0;
+	border: 5px green dashed;
+	border-radius: 15px;
 	cursor: pointer;
 }
 
