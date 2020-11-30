@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Gallery from './Gallery';
 
 function Configuration({ avatarName, setStaticImg }) {
@@ -10,6 +10,8 @@ function Configuration({ avatarName, setStaticImg }) {
 		setActiveTab(emotion);
 		setSelectedEmotion(emotion);
 	};
+
+
 
 	return (
 		<section id="configuration">

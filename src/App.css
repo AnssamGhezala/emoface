@@ -5,7 +5,7 @@
 	min-height: 100vh;
 	max-height: 100vh;
 	grid-template-columns: 280px 60%;
-	grid-template-rows: 10px 50%;
+	grid-template-rows: 10px 1fr;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
 	grid-template-areas: "header header " "search output " "search config " "search config ";
@@ -57,31 +57,49 @@ input {
 	margin-top: 16px;
 	border: 0px black solid;
 	height: 100%;
-	overflow: scroll;
 	background: linear-gradient(180deg, #ffffff 0%, hsl(204, 47%, 74%) 100%);
 	border-radius: 10px;
 	border-color: #222;
 	border-top-width: 4px;
+	display: flex;
+	flex-direction: column;
+}
+
+#add-avatar-btn {
+	color: #135815;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 30px;
+	cursor: pointer;
 }
 
 #avatars-wrapper {
-	height: 100%;
-	margin: auto;
-	padding-top: 10px;
-	width: 124px;
+	height: 90%;
+	/* margin: auto; */
+	width: 100%;
 	text-align: center;
+	padding-top: 10px;
+	overflow-y: scroll;
 }
 
 .avatar {
 	height: 124px;
 	width: 124px;
-	border: 5px green dashed;
 	border-radius: 15px;
 	cursor: pointer;
+	margin: auto auto 35px auto;
+	border: 5px dashed transparent;
 }
 
+.avatar-selected {
+	border-color: green;
+}
 .avatar-img {
 	border-radius: 10px;
+	width: 124px;
+	height: 124px;
+	background-position: center;
+	background-size: cover;
 }
 
 #search {
@@ -111,12 +129,18 @@ input {
 	justify-content: space-between;
 	text-align: center;
 }
-
+.delete-btn {
+	border-radius: 10px !important;
+	padding: '10px' !important;
+	color: white !important;
+	width: 100px !important;
+}
 .emotion-container {
 	padding-top: 6px;
 	overflow: auto;
 	white-space: nowrap;
 	padding-top: 20px;
+	padding-left: 10px;
 }
 /* .emotion-container > img {
 	margin-top: 6px;
@@ -127,10 +151,22 @@ input {
 
 } */
 .emotion-container > div {
+	display: inline-block;
+	position: relative;
+}
+
+.trash-icon {
+	font-size: 24px;
+	top: -5px;
+	color: red;
+	left: -5px;
+	position: absolute;
+	cursor: pointer;
+}
+.emotion-picture {
 	margin-top: 6px;
 	border: solid 2px black;
 	border-radius: 2px;
-	display: inline-block;
 	margin-right: 15px;
 	width: 128px;
 	height: 166px;
@@ -196,4 +232,24 @@ input {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.drag-drop-zone {
+	padding: 2rem;
+	text-align: center;
+	background: #07f;
+	border-radius: 0.5rem;
+	box-shadow: 5px 5px 10px #c0c0c0;
+}
+.drag-drop-zone p {
+	color: #fff;
+}
+.drag-drop-zone.inside-drag-area {
+	opacity: 0.7;
+}
+.dropped-files li {
+	color: #07f;
+	padding: 3px;
+	text-align: left;
+	font-weight: bold;
 }
